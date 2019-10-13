@@ -1,14 +1,13 @@
 # IllumioCodingChallenge
 
-Hello! This is my submission to the coding challenge. Firewall.py contains my implementation of the class, along with 2 helper functions.
+Hello! This is my submission to the coding challenge. Firewall.py contains my implementation of the class, along with 2 helper functions. My overall process can be summarized as follows: I first load the input csv into pandas as a dataframe, and give it the appropriate column names. I then add 4 columns to the dataframe: port_low gives the lowest number in the permissible range for that rule, and respectively port_high gives the highest number. Ip_low and ip_high function the same way, except I added one feature - I converted each ip address abc.def.ghi.jkl to a number, abcdefghijkl. This allows for easy comparison between two ip addresses to test which one is greater. 
 
-Include a README file, which includes anything you’d like to communicate to the person
-that is reviewing your code. This may include items such as:
-a. how you tested your solution
-b. any interesting coding, design, or algorithmic choices you’d like to point out
-c. any refinements or optimizations that you would’ve implemented if you had
-more time
-d. anything else you’d like the reviewer to know
-3. Include in your README file the particular area of the team that you’re interested in.
-Descriptions of the three areas can be found on the next page. If you’re interested in
-more than one area and/or have a ranking, please let us know!
+accept_packet returns true if there are any rows that satisfy all of the requirements of the input. If the given port/ip_address is in between the lowest and highest permissible numbers, inclusive, then those are counted as satisfied.
+
+The first helper function, get_number_range, returns port_low and port_high when port is passed in, and ip_low and ip_high when ip_address is passed in. This is done using the second helper function, get_number, which parses a given ip address and converts it to an integer abcdefghijkl. 
+
+I didn't have time to fully test my solution, so I included one other input csv file, MyOwnTest.csv, that just included a few other examples. I tested both the provided tests and my own test in Test.py, where I use the Python unittest unit testing framework that checks that my program outputs the correct boolean value for a variety of inputs. Given more time, I definitely would have tested more extensively, and included more edge cases. 
+
+I used a pandas dataframe to store my data because I am proficient in using pandas, but more crucially, pandas is optimized to run really quickly when handling tabular data, and it is commonly used for much larger datasets. That's why I thought it would be a fast and space-efficient method to store the input file, as pandas contains optimizations in C that help with memory management and other factors. So when I made the decision to use a pandas dataframe, it was a natural next step to include more columns in my dataframe that would make my comparisons even easier. I decided to convert the ip addresses to a number because that allows for much faster comparing than parsing the string, octet by octet. But if I had more time, I would have deleted the original port and ip_address columns from the dataframe at the end, because they are no longer neccessary and just taking up extra space.
+
+As for my team preferences, my first choice is Data, my second choice is Policy, and my third choice is Platform. In general, I hope this summary made it a bit easier to navigate my solution. With more time, I definitely would have documented my helper functions better, and included more examples. I am happy to answer any questions you may have. Thank you for your time and consideration!
